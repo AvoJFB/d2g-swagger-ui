@@ -1,0 +1,432 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: D2G API
+  description: Documentation for D2G API
+  contact:
+    name: Avetik
+    email: avetik.harutyunyan1@gmail.com
+  version: "0.0.4"
+  license:
+    name: MIT License
+    url: https://github.com/Logicify/d2g-api/blob/master/LICENSE
+# the domain of the service
+host: d2g.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /user:
+    get:
+      summary: Get all users
+      description: Returns array of all users.
+      tags:
+        - User
+      responses:
+        200:
+          description: Returns array of all users.
+          schema:
+            title: Users
+            type: array
+            items:
+              $ref: '#/definitions/getUser'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+    post:
+      summary: Create user
+      description: Creates user in database.
+      tags:
+        - User
+      parameters:
+        - name: user
+          in: body
+          description: The user JSON you want to post.
+          schema:
+            $ref: '#/definitions/newUser'
+          required: true
+      responses:
+        200:
+          description: User created successfully.
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /user/{id}:
+    get:
+      summary: Get user
+      description: Returns information about the user by it's ID.
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the user
+          required: true
+      responses:
+        200:
+          description: Profile information for a user
+          schema:
+            $ref: '#/definitions/getUser'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+    put:
+      summary: Update user
+      description: Updates the information about the user.
+      tags:
+        - User
+      parameters:
+        - in: body
+          name: info
+          description: New information for user
+          required: true
+          schema:
+            $ref: '#/definitions/putUser'
+        - in: path
+          name: id
+          description: ID of user that needs to be updated
+          required: true
+          type: string
+      responses:
+        200:
+          description: User updated successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+    delete:
+      summary: Delete user
+      description: Deletes user from database.
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the user
+          required: true
+      responses:
+        200:
+          description: User has been deleted successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /user/{id}/status:
+    put:
+      summary: Update user's status
+      description: Updates the status of the user.
+      tags:
+        - User
+      parameters:
+        - in: body
+          name: status
+          description: New status for user
+          required: true
+          schema:
+            $ref: '#/definitions/userStatus'
+        - in: path
+          name: id
+          description: ID of user that needs to be updated
+          required: true
+          type: string
+      responses:
+        200:
+          description: User status updated successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /user/login:
+    post:
+      summary: User login
+      description: Login user to app
+      tags:
+        - Auth
+        - User
+      parameters:
+        - in: body
+          name: info 
+          description: email and password of the user
+          required: true
+          schema:
+            $ref: '#/definitions/login'
+      responses:
+        200:
+          description: User logged in successfully
+          schema:
+            $ref: '#/definitions/getUser'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /user/logout: 
+    get: 
+      summary: User logout
+      description: Logout user from app
+      tags:
+        - Auth
+        - User
+      responses:
+        200:
+          description: User loged out successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /user/session:
+    get:
+      summary: Get current user
+      description: Returns current user from session.
+      tags:
+        - User
+      responses:
+        200:
+          description: Current user info.
+          schema:
+            $ref: '#/definitions/getUser'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /expenses:
+    get:
+      summary: Expense list
+      tags:
+        - Expense
+      parameters:
+        - in: query
+          name: periodStart
+          description: Start period of expense list.
+          required: true
+          type: string
+          format: date-time
+        - in: query
+          name: periodEnd
+          description: End period of expense list.
+          required: true
+          type: string
+          format: date-time
+      responses:
+        200:
+          description: Expense List of a user.
+          schema:
+            $ref: '#/definitions/expenseList'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /item:
+    post:
+      summary: New item
+      tags:
+        - Expense
+      parameters:
+        - name: item
+          in: body
+          description: Item information
+          schema:
+            $ref: '#/definitions/expenseItem'
+          required: true
+      responses:
+        200:
+          description: New item added successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+    put:
+      summary: Change existing item
+      tags:
+        - Expense
+      parameters:
+        - name: item
+          in: body
+          description: Item information
+          schema:
+            $ref: '#/definitions/expenseItem'
+          required: true
+      responses:
+        200:
+          description: Item changed successfully.
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+definitions:
+  getUser:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier of user
+        default: "f314e17b-9e28-43ae-9780-54cba623b03e"
+      firstName:
+        type: string
+        description: First name of the user
+        default: "Bob"
+      lastName:
+        type: string
+        description: Last name of the user
+        default: "Smith"
+      email:
+        type: string
+        description: Email address of the user
+        default: "example@gmail.com"
+      avatarUrl:
+        type: string
+        description: User avatar's url
+        default: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png"
+      status:
+        $ref: '#/definitions/userStatus'
+      createdDate:
+        type: string
+        format: date
+        description: When user's account was created
+      updatedDate:
+        type: string
+        format: date
+        description: When user's account was updated
+      createdBy:
+        type: string
+        description: Unique identifier of user's creator
+        default: "f314e17b-9e28-43ae-9780-54cba623b03e"
+      updatedBy:
+        type: string
+        description: Unique identifier of user's updater
+        default: "f314e17b-9e28-43ae-9780-54cba623b03e"
+  newUser:
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: First name of the user
+        default: "Bob"
+      lastName:
+        type: string
+        description: Last name of the user
+        default: "Smith"
+      email:
+        type: string
+        description: Email address of the user
+        default: "example@gmail.com"
+      password:
+        type: string
+        format: password
+        description: User's password
+        default: qwerty123
+  putUser:
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: First name of the user
+        default: "Bob"
+      lastName:
+        type: string
+        description: Last name of the user
+        default: "Smith"
+      email:
+        type: string
+        description: Email address of the user
+        default: "example@gmail.com"
+      password:
+        type: string
+        format: password
+        description: User's password
+        default: qwerty123
+      avatarUrl:
+        type: string
+        description: User avatar's url
+        default: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png"
+  userStatus:
+    type: string
+    description: User status
+    enum:
+      - NEW
+      - ACTIVE
+      - LOCKED
+  login: 
+    type: object
+    properties:
+      email: 
+        type: string
+        description: Email of the user
+        default: "email@gmail.com"
+      password: 
+        type: string
+        format: password
+        description: Password of the user
+        default: qwerty123
+  error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  expenseList:
+    type: object
+    properties:
+      owner:
+        $ref: '#/definitions/getUser'
+      periodStart:
+        type: string
+        format: date-time
+      periodEnd:
+        type: string
+        format: date-time
+      totalIncome:
+        type: number
+        format: double
+      totalExpense:
+        type: number
+        format: double
+      lineItems:
+        type: array
+        items:
+          $ref: '#/definitions/expenseItem'
+  expenseItem:
+    type: object
+    properties: 
+      name:
+        type: string
+      category:
+        $ref: '#/definitions/expenseCategory'
+      price:
+        $ref: '#/definitions/price'
+  price:
+    type: object
+    properties:
+      cost:
+        type: number
+        format: double
+      currency:
+        type: string
+  expenseCategory:
+    type: object
+    properties:
+      name:
+        type: string
+      tags:
+        type: string
+  store:
+    type: object
+    properties:
+      name:
+        type: string
+  product:
+    type: object
+    properties:
+      name:
+        type: string
