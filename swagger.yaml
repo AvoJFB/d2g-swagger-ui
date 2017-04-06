@@ -11,7 +11,6 @@ info:
     url: https://github.com/Logicify/d2g-api/blob/master/LICENSE
 # the domain of the service
 host: d2g.com
-# array of all schemes that your API supports
 schemes:
   - https
 # will be prefixed to all paths
@@ -371,8 +370,10 @@ definitions:
       code:
         type: integer
         format: int32
+        default: 200
       message:
         type: string
+        default: "OK"
   expenseList:
     type: object
     properties:
@@ -381,15 +382,19 @@ definitions:
       periodStart:
         type: string
         format: date-time
+        default: 2017-04-06T16:04:36.869Z
       periodEnd:
         type: string
         format: date-time
+        default: 2017-04-06T16:04:36.869Z
       totalIncome:
         type: number
         format: double
+        default: 100
       totalExpense:
         type: number
         format: double
+        default: 50
       lineItems:
         type: array
         items:
@@ -418,15 +423,19 @@ definitions:
     properties:
       name:
         type: string
+        default: "Smartphones"
       tags:
         type: string
+        default: "Electronics"
   store:
     type: object
     properties:
       name:
         type: string
+        default: "Comfy"
   product:
     type: object
     properties:
       name:
         type: string
+        default: "Samsung Galaxy S8"
