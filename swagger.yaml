@@ -199,7 +199,7 @@ paths:
     get:
       summary: Expense list
       tags:
-        - Expense
+        - Expenses
       parameters:
         - in: query
           name: periodStart
@@ -226,7 +226,7 @@ paths:
     post:
       summary: New item
       tags:
-        - Expense
+        - Expenses
       parameters:
         - name: item
           in: body
@@ -244,7 +244,7 @@ paths:
     put:
       summary: Change existing item
       tags:
-        - Expense
+        - Expenses
       parameters:
         - name: item
           in: body
