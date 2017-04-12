@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- 6.10.0
+deploy:
+  provider: s3
+  access_key_id: AKIAJ4VVQWDRVS2EZA5Q 
+  secret_access_key:
+    secure: hOkH/leykMUUOOTaspUG3wyqFJ2wifgCb9li1stF6usaWLxEe50ywTseJTi6Jb2SduPgaDYtDW5S7z7cCwNROL6SYjQhuv6lOAxEzFEj5VXUZ9J/QZGuijnlrMFu1iosNNjKV1rwwKFNjGD7STlLPw3tQhTLW83f8ETI0gWoKMi5endCd6q3RVrsClnQfdyY4MWZxnLYMud92xUmH4PvGqHlshzsVh1PuBwVIpbeZsffbtM4YadcxH42WQAlKmOVA+Wpm5zSWe6M597/3zVHBVnl+nwPEjulONLVlKL2BjeeFm2U5jDz6x3x61yttyEJ8/D0EwX0YXf6d5U8YDj7h5swoYJrb5/1FUUhleRaSJnIrLrfhkp50WKEaGzGkkJ1Gy5F6xKDtdX+7AYpqElg/Bs32BHkFPUd5xK7ULvLXOfH6qu0EpD4JY0/zLnY7b77QfPSMLBxqHZg1B9fylWGV+xMpr+Kqj1IZ4nuWvENpME6z4evdCfJfvPMJOODwLAySCf740FhOK6ySKLt6Zi9uv5UjYsGoMP4yqTqTYxifI6j7kiMRGf0+qIk4NfyFK2G0HGq588oDA0rfSfsLqze26LjTWmCVbSNgkeENEAf5luzSo4oEvwJPHKwC3EVQyxXZkRxjjV+LlrvRD5kRDnlnU8HtAHqpY31NtkQ6hT68k8=
+  bucket: d2g-swagger-ui
+  region: us-west-2
+  acl: public_read
+  skip_cleanup: true
+  on:
+    repo: AvoJFB/d2g-swagger-ui
+
