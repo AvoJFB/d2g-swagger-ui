@@ -1,6 +1,4 @@
 language: generic
-before_script:
-- cd ~
 deploy:
   provider: s3
   access_key_id: AKIAIOMDQIHOPAN6HBAQ
