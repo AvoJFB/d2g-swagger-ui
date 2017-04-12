@@ -4,7 +4,8 @@ deploy:
   access_key_id: AKIAIOMDQIHOPAN6HBAQ
   secret_access_key: 
     secure: SoAIfTFcjIFSSUf2HZH7pMedOWXkdsXJW2fNin1sj4SAI8NQ3xruUdqvaF00MHPqJaL+zOvMpJx0uiA/LSpfTt/kE/ann+3aAcT4Hj70JFu15PqZlWC6R4gJnW6mZtYX2u7jkmh871YsJM/ulU4LaxS9gZUh5SJSyOrq0RbWasAiluJ09e0JCOmzalqSSuIJn3c7wRJsPJlugSR8RipUXKhvq5uN7lWWYDngb4d+QS8JdL46auLXUSsLfZR/ZYt/R4hu1BdE/AKg7EqB7pQlVCO0t76MAMOEl6414FDOJnsyUAh+Der3u4C3T+H96ybB45RkCI+GIMVjOunzQY2eCi6X/CEMHVdINRwbgaB79Z362cu2pLOHvEsXFtSLgG8pLmridERemZdC+K6cyiayw3oJz5yCfBvPFvWpmynHhj11dnklXb62WIqQGM3ADzU+aPAk63yeozOpI0h5hwNGI5yVrhLvVYVnS4QDB53Sp+wabBgeoSfYmjuTp8CV9aObGeJPyHo53Eln77x6nT6QVwgLbX9T+pN+33v2y9DHGcPVvnRNdrPBimcBoNYe40JjmPa2yeBU4UjZ/KVQKlYludkivfmSriUsLm/pptQlZLz/ZFewUuAFGw0Cn/tgdLIgsolsqxarRfeX/m8LTebAEKOzj/+CgEzV6hI6WT6ro8Y=
-  file: swagger.yaml
+  file_glob: true
+  file: "swagger.yaml"
   bucket: d2gswaggerui
   region: eu-central-1
   acl: public_read
