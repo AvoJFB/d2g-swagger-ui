@@ -406,6 +406,8 @@ definitions:
         type: string
       category:
         $ref: '#/definitions/expenseCategory'
+      store:
+        $ref: '#/definitions/store'
       price:
         $ref: '#/definitions/price'
   price:
