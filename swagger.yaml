@@ -14,7 +14,6 @@ host: ec2-54-245-23-39.us-west-2.compute.amazonaws.com:8080
 schemes:
   - http
 # will be prefixed to all paths
-basePath: /api
 produces:
   - application/json
 paths:
