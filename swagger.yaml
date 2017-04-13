@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://github.com/Logicify/d2g-api/blob/master/LICENSE
 # the domain of the service
-host: d2g.com
+host: ec2-54-245-23-39.us-west-2.compute.amazonaws.com:8080
 schemes:
   - https
 # will be prefixed to all paths
