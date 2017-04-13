@@ -9,11 +9,9 @@ info:
   license:
     name: MIT License
     url: https://github.com/Logicify/d2g-api/blob/master/LICENSE
-# the domain of the service
 host: ec2-54-245-23-39.us-west-2.compute.amazonaws.com:8080
 schemes:
   - http
-# will be prefixed to all paths
 produces:
   - application/json
 paths:
@@ -400,7 +398,9 @@ definitions:
           $ref: '#/definitions/expenseItem'
   expenseItem:
     type: object
-    properties: 
+    properties:
+      id:
+        type: number
       name:
         type: string
       category:
@@ -422,6 +422,8 @@ definitions:
   expenseCategory:
     type: object
     properties:
+      id:
+        type: number
       name:
         type: string
         default: "Smartphones"
@@ -431,12 +433,8 @@ definitions:
   store:
     type: object
     properties:
+      id:
+        type: number
       name:
         type: string
         default: "Comfy"
-  product:
-    type: object
-    properties:
-      name:
-        type: string
-        default: "Samsung Galaxy S8"
