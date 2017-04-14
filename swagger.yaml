@@ -9,7 +9,7 @@ info:
   license:
     name: MIT License
     url: https://github.com/Logicify/d2g-api/blob/master/LICENSE
-host: ec2-54-245-23-39.us-west-2.compute.amazonaws.com:8080
+host: ec2-54-245-23-39.us-west-2.compute.amazonaws.com
 schemes:
   - http
 produces:
