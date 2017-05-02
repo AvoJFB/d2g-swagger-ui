@@ -283,22 +283,6 @@ definitions:
         default: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png"
       status:
         $ref: '#/definitions/userStatus'
-      createdDate:
-        type: string
-        format: date
-        description: When user's account was created
-      updatedDate:
-        type: string
-        format: date
-        description: When user's account was updated
-      createdBy:
-        type: string
-        description: Unique identifier of user's creator
-        default: "f314e17b-9e28-43ae-9780-54cba623b03e"
-      updatedBy:
-        type: string
-        description: Unique identifier of user's updater
-        default: "f314e17b-9e28-43ae-9780-54cba623b03e"
   newUser:
     type: object
     properties:
