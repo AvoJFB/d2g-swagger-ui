@@ -363,12 +363,10 @@ definitions:
         $ref: '#/definitions/getUser'
       periodStart:
         type: string
-        format: date-time
-        default: 2017-04-06T16:04:36.869Z
+        format: date
       periodEnd:
         type: string
-        format: date-time
-        default: 2017-04-06T16:04:36.869Z
+        format: date
       totalIncome:
         type: number
         format: double
