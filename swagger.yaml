@@ -5,11 +5,11 @@ info:
   contact:
     name: Avetik
     email: avetik.harutyunyan1@gmail.com
-  version: "0.0.4"
+  version: "0.0.5"
   license:
     name: MIT License
     url: https://github.com/Logicify/d2g-api/blob/master/LICENSE
-host: ec2-54-245-23-39.us-west-2.compute.amazonaws.com
+host: api.drivetogain.ga
 schemes:
   - http
 produces:
@@ -516,7 +516,7 @@ definitions:
     properties:
       id:
         type: string
-        description: Unique identifier of store
+        description: Unique identifier of the store
         default: "f314e17b-9e28-43ae-9780-54cba623b03e"
       name:
         type: string
